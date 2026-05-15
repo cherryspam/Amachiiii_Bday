@@ -150,8 +150,9 @@ body.game-active {
 }
 
 .p1 { top: 10%; left: 10%; transform: rotate(-10deg); }
-.p2 { top: 15%; right: 10%; transform: rotate(15deg); }
-.p3 { top: 35%; left: 50%; transform: translate(-50%, -50%) rotate(5deg); }
+.p2 { top: 10%; right: 10%; transform: rotate(15deg); }
+.p3 { top: 35%; left: 15%; transform: rotate(-5deg); }
+.p4 { top: 40%; right: 15%; transform: rotate(8deg); }
 
 /* Sprites */
 #sprite-container {
