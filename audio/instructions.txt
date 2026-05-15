@@ -1,0 +1,14 @@
+# Audio Setup Instructions
+
+To add background music and sound effects to this project, follow these steps:
+
+1. Place your audio files inside this `audio/` folder.
+2. Rename your files so they match the expected names in the code, or update `script.js` to match your filenames.
+
+### Recommended Files:
+- **bgm.mp3** - Soft, cute background music (plays on loop after the first interaction).
+- **click.mp3** - A small pop or click sound when the user advances the dialogue.
+- **confetti.mp3** - A celebratory sound for the final scene (Scene 8).
+
+### Modifying Code:
+Open `script.js` and look at the top where the `Howl` objects are initialized. You can change the filenames there if you'd prefer to use different names.
