@@ -19,6 +19,7 @@ body {
     color: var(--text-color);
     overflow: hidden;
     height: 100vh;
+    height: 100dvh;
     width: 100vw;
     display: flex;
     justify-content: center;
@@ -50,7 +51,13 @@ body.game-active {
 @media (max-width: 800px) {
     #game-container {
         border: none;
+        width: 100vw;
+        height: 100vh;
+        height: 100dvh;
+        max-width: none;
         max-height: 100vh;
+        max-height: 100dvh;
+        box-shadow: none;
     }
 }
 
@@ -345,13 +352,119 @@ body.game-active {
 }
 
 @media (max-width: 600px) {
-    .glow-text {
-        padding: 5px 10px;
+    body.game-active {
+        background-size: 24px 24px;
+        background-position: 0 0, 12px 12px;
     }
+
+    .terminal-text {
+        width: min(86vw, 360px);
+        min-height: 5rem;
+        padding: 0 10px;
+        font-size: clamp(1.2rem, 7vw, 1.7rem);
+        line-height: 1.15;
+        text-align: center;
+    }
+
+    #start-btn {
+        margin-top: 18px;
+        padding: 10px 18px;
+        font-size: 1.35rem;
+    }
+
+    .polaroid {
+        padding: 6px 6px 24px 6px;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.14);
+    }
+
+    .polaroid img {
+        width: clamp(76px, 24vw, 96px);
+        height: clamp(92px, 29vw, 116px);
+    }
+
+    .p1 { top: 7%; left: 4%; }
+    .p2 { top: 7%; right: 4%; }
+    .p3 { top: 24%; left: 7%; }
+    .p4 { top: 25%; right: 7%; }
+
+    #sprite-container {
+        bottom: 28%;
+        height: 54%;
+    }
+
+    .sprite {
+        height: min(80%, 46vh);
+        max-height: 345px;
+    }
+
+    #dialogue-box {
+        left: 4%;
+        bottom: calc(14px + env(safe-area-inset-bottom));
+        width: 92%;
+        height: auto;
+        min-height: 168px;
+        padding: 26px 18px 30px;
+        border-width: 4px;
+        box-shadow: 5px 5px 0px rgba(0,0,0,0.14);
+    }
+
+    #speaker-name {
+        top: -21px;
+        left: 14px;
+        padding: 3px 12px;
+        border-width: 3px;
+        font-size: 1.25rem;
+        letter-spacing: 1px;
+    }
+
+    #dialogue-text {
+        font-size: clamp(1.28rem, 7vw, 1.55rem);
+        line-height: 1.18;
+        min-height: 96px;
+    }
+
+    #next-indicator {
+        right: 14px;
+        bottom: 10px;
+    }
+
+    .glow-text {
+        top: calc(18px + env(safe-area-inset-top));
+        width: 92%;
+        padding: 7px 10px;
+        border-width: 3px;
+        font-size: clamp(1.35rem, 8vw, 2rem);
+        line-height: 0.95;
+        text-shadow: 3px 3px 0px var(--name-bg), 0 0 16px rgba(255, 255, 255, 0.8);
+    }
+
     #replay-btn {
         right: 12px;
-        bottom: 12px;
+        bottom: calc(12px + env(safe-area-inset-bottom));
         font-size: 1.1rem;
         padding: 6px 10px;
+        border-width: 3px;
+    }
+}
+
+@media (max-width: 390px) {
+    #sprite-container {
+        bottom: 31%;
+        height: 50%;
+    }
+
+    .sprite {
+        height: min(76%, 41vh);
+        max-height: 305px;
+    }
+
+    #dialogue-box {
+        min-height: 178px;
+        padding: 26px 16px 30px;
+    }
+
+    #dialogue-text {
+        font-size: clamp(1.18rem, 6.6vw, 1.42rem);
+        min-height: 110px;
     }
 }
