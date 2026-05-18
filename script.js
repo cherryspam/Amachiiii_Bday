@@ -57,6 +57,16 @@ const nextIndicator = document.getElementById('next-indicator');
 const finalScreen = document.getElementById('final-screen');
 const replayBtn = document.getElementById('replay-btn');
 
+function isPhoneView() {
+    return window.matchMedia('(max-width: 600px)').matches;
+}
+
+function sceneLayout() {
+    return isPhoneView()
+        ? { cherinLeft: '31%', amachiLeft: '69%', finalY: 64, finalScale: 1.04 }
+        : { cherinLeft: '30%', amachiLeft: '70%', finalY: 105, finalScale: 1.2 };
+}
+
 // Initialization typing effect
 const initTexts = ["Initializing Amachii...", "Wait ok patience 😁😁😁😁"];
 let initIndex = 0;
@@ -129,9 +139,10 @@ function playLine() {
             ease: "back.out(1.7)" 
         });
     } else if (line.action === "show_amachi") {
+        const layout = sceneLayout();
         amachiSprite.classList.add('idle');
-        gsap.to(cherinSprite, { left: '30%', duration: 1 }); // move Cherin left
-        gsap.set(amachiSprite, { left: '70%', xPercent: -50 });
+        gsap.to(cherinSprite, { left: layout.cherinLeft, duration: 1 }); // move Cherin left
+        gsap.set(amachiSprite, { left: layout.amachiLeft, xPercent: -50 });
         gsap.to(amachiSprite, { opacity: 1, duration: 1, delay: 0.5 });
     } else if (line.action === "emotional_start") {
         amachiSprite.src = "Amachi_Sprites/amachi_neutral.png";
@@ -185,6 +196,7 @@ dialogueBox.addEventListener('click', () => {
 });
 
 function endGame() {
+    const layout = sceneLayout();
     gsap.to(dialogueBox, { opacity: 0, duration: 1 });
     gsap.to(cherinSprite, { opacity: 0, duration: 1 });
     amachiSprite.classList.remove('idle');
@@ -193,8 +205,8 @@ function endGame() {
     gsap.to(amachiSprite, { 
         left: '50%', 
         xPercent: -50,
-        y: 105,
-        scale: 1.2,
+        y: layout.finalY,
+        scale: layout.finalScale,
         duration: 2, 
         ease: "power2.inOut",
         onComplete: () => {
